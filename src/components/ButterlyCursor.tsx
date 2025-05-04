@@ -11,10 +11,9 @@ const ButterlyCursor = () => {
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       
-      // Определение направления движения бабочки
-      if (e.clientX < lastX) {
+      if (e.clientX < lastX - 3) {
         setDirection('left');
-      } else if (e.clientX > lastX) {
+      } else if (e.clientX > lastX + 3) {
         setDirection('right');
       }
       
@@ -30,14 +29,14 @@ const ButterlyCursor = () => {
       setVisible(true);
     };
 
-    document.addEventListener('mousemove', updatePosition);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
+    window.addEventListener('mousemove', updatePosition);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
-      document.removeEventListener('mousemove', updatePosition);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
+      window.removeEventListener('mousemove', updatePosition);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, [lastX]);
 
@@ -54,19 +53,19 @@ const ButterlyCursor = () => {
     >
       <div className="butterfly-cursor-inner">
         <svg 
-          width="40" 
-          height="40" 
+          width="50" 
+          height="50" 
           viewBox="0 0 24 24" 
-          fill="none" 
+          className="butterfly-wings"
           xmlns="http://www.w3.org/2000/svg"
-          className="butterfly-cursor-wing"
         >
           <path
-            d="M12 4C13.5913 4 15.1174 4.63214 16.2426 5.75736C17.3679 6.88258 18 8.4087 18 10C18 11.5913 17.3679 13.1174 16.2426 14.2426C15.1174 15.3679 13.5913 16 12 16C10.4087 16 8.88258 15.3679 7.75736 14.2426C6.63214 13.1174 6 11.5913 6 10C6 8.4087 6.63214 6.88258 7.75736 5.75736C8.88258 4.63214 10.4087 4 12 4ZM12 4V2M4 12L2 14M20 12L22 14M6 20C7.5 18 9.5 17 12 17C14.5 17 16.5 18 18 20"
+            d="M12.5 6C13.9 5.4 15.3 5 17 5C19.5 5 21.3 6 22 8C20.9 9.3 19.3 10 17 10C15.7 10 14.5 9.8 13.5 9.5M12.5 18C13.9 18.6 15.3 19 17 19C19.5 19 21.3 18 22 16C20.9 14.7 19.3 14 17 14C15.7 14 14.5 14.2 13.5 14.5M11.5 6C10.1 5.4 8.7 5 7 5C4.5 5 2.7 6 2 8C3.1 9.3 4.7 10 7 10C8.3 10 9.5 9.8 10.5 9.5M11.5 18C10.1 18.6 8.7 19 7 19C4.5 19 2.7 18 2 16C3.1 14.7 4.7 14 7 14C8.3 14 9.5 14.2 10.5 14.5M12 10C11.3 11.1 11.3 12.9 12 14M12 2V22"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            fill="none"
           />
         </svg>
       </div>

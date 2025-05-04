@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
  
 @layer base {
   :root {
-    --background: 210 50% 98%;
+    --background: 210 70% 98%;
     --foreground: 222.2 84% 4.9%;
     
     --muted: 210 40% 93%;
@@ -22,13 +22,13 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     
-    --primary: 211 77% 60%;
+    --primary: 203 89% 53%;
     --primary-foreground: 210 40% 98%;
     
-    --secondary: 142 50% 55%;
+    --secondary: 160 84% 39%;
     --secondary-foreground: 210 40% 98%;
     
-    --accent: 216 52% 51%;
+    --accent: 142 71% 45%;
     --accent-foreground: 210 40% 98%;
     
     --destructive: 0 84.2% 60.2%;
@@ -36,7 +36,7 @@
     
     --ring: 215 20.2% 65.1%;
     
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
  
   * {
@@ -44,64 +44,146 @@
   }
   
   body {
-    @apply bg-background text-foreground font-['Baloo_2',sans-serif];
+    @apply bg-background text-foreground font-['Comfortaa',sans-serif];
     cursor: none;
   }
 }
 
 .butterfly-cursor {
   @apply fixed pointer-events-none z-50 flex items-center justify-center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   transform-origin: center;
-  transition: transform 0.1s ease;
+  transition: transform 0.15s ease-out;
   will-change: transform;
 }
 
 .butterfly-cursor-inner {
-  @apply absolute w-full h-full animate-butterfly-flying;
+  @apply absolute w-full h-full;
+  animation: butterfly-float 3s ease-in-out infinite;
 }
 
-.butterfly-cursor-wing {
-  @apply absolute w-full h-full animate-flutter text-primary;
+.butterfly-wings {
+  @apply absolute w-full h-full text-primary;
+  animation: butterfly-flap 0.8s ease-in-out infinite;
 }
 
-.butterfly-cursor-left-wing, 
-.butterfly-cursor-right-wing {
-  @apply absolute h-full;
+@keyframes butterfly-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.page-transition-enter {
+@keyframes butterfly-flap {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.8); }
+}
+
+.page-transition {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px);
+  animation: page-fade-in 0.7s forwards ease-out;
 }
 
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 500ms, transform 500ms;
-}
-
-.flower-petal {
-  @apply absolute bg-forget-me-not rounded-full opacity-80;
-  width: 20px;
-  height: 20px;
-}
-
-.flower-center {
-  @apply absolute bg-yellow-300 rounded-full;
-  width: 12px;
-  height: 12px;
+@keyframes page-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .forget-me-not {
-  @apply relative inline-block;
+  position: relative;
   width: 80px;
   height: 80px;
 }
 
-.forget-me-not .flower-petal:nth-child(1) { transform: translate(30px, 10px); }
-.forget-me-not .flower-petal:nth-child(2) { transform: translate(10px, 30px); }
-.forget-me-not .flower-petal:nth-child(3) { transform: translate(30px, 50px); }
-.forget-me-not .flower-petal:nth-child(4) { transform: translate(50px, 30px); }
-.forget-me-not .flower-petal:nth-child(5) { transform: translate(30px, 30px); }
+.flower-petal {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #66b3ff;
+  border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  box-shadow: 0 0 10px rgba(102, 179, 255, 0.3);
+}
+
+.flower-petal:nth-child(1) { transform: translate(27px, 4px) rotate(45deg); }
+.flower-petal:nth-child(2) { transform: translate(4px, 27px) rotate(135deg); }
+.flower-petal:nth-child(3) { transform: translate(27px, 50px) rotate(225deg); }
+.flower-petal:nth-child(4) { transform: translate(50px, 27px) rotate(315deg); }
+.flower-petal:nth-child(5) { transform: translate(27px, 27px); animation: pulse 3s infinite ease-in-out; }
+
+.flower-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: #ffde59;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 222, 89, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(27px, 27px) scale(1); }
+  50% { transform: translate(27px, 27px) scale(1.1); }
+}
+
+.floating {
+  animation: floating 3s infinite ease-in-out;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cloud {
+  background: white;
+  border-radius: 100px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  height: 120px;
+  position: relative;
+  width: 350px;
+}
+
+.cloud:before,
+.cloud:after {
+  background: white;
+  border-radius: 100px;
+  content: '';
+  position: absolute;
+}
+
+.cloud:before {
+  height: 100px;
+  left: 50px;
+  top: -50px;
+  width: 100px;
+}
+
+.cloud:after {
+  height: 80px;
+  right: 50px;
+  top: -30px;
+  width: 100px;
+}
+
+.cloud-sm {
+  height: 60px;
+  width: 175px;
+}
+
+.cloud-sm:before {
+  height: 50px;
+  left: 25px;
+  top: -25px;
+  width: 50px;
+}
+
+.cloud-sm:after {
+  height: 40px;
+  right: 25px;
+  top: -15px;
+  width: 50px;
+}

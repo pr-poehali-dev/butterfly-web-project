@@ -21,13 +21,13 @@ const config = {
     },
     extend: {
       colors: {
-        primary: "#4A8FE7", // Основной синий
-        secondary: "#5AC17D", // Зеленый
-        accent: "#3E7BC7", // Темно-синий для акцентов
-        "forget-me-not": "#88C4F2", // Цвет незабудки
-        "soft-green": "#A3E4B8", // Мягкий зеленый
-        "pale-blue": "#D3E5F8", // Светло-голубой
-        "pale-green": "#E0F5E6", // Светло-зеленый
+        primary: "#1a91ea", // Яркий синий
+        secondary: "#22ba6a", // Сочный зеленый
+        accent: "#0ad67c", // Мятный акцент
+        "forget-me-not": "#66b3ff", // Цвет незабудки
+        "soft-green": "#a0e5c8", // Мягкий зеленый
+        "pale-blue": "#c7e6ff", // Светло-голубой
+        "cloud-white": "#f5faff", // Белый с голубым оттенком
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -41,6 +41,7 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        comfortaa: ["Comfortaa", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -51,20 +52,28 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
           to: { height: "0", opacity: "0" },
         },
-        "butterfly-flying": {
-          "0%, 100%": { transform: "translateY(0px)" },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "flutter": {
-          "0%, 100%": { transform: "rotate(-5deg)" },
-          "50%": { transform: "rotate(5deg)" },
-        }
+        pulse: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "butterfly-flying": "butterfly-flying 2s ease-in-out infinite",
-        "flutter": "flutter 2s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
+        pulse: "pulse 2s ease-in-out infinite",
+      },
+      boxShadow: {
+        soft: "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
+        glow: "0 0 15px rgba(102, 179, 255, 0.6)",
+        "glow-green": "0 0 15px rgba(10, 214, 124, 0.5)",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
