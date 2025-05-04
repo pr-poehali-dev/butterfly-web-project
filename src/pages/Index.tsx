@@ -2,8 +2,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import ButterlyCursor from '@/components/ButterlyCursor';
 import Icon from '@/components/ui/icon';
+import FlyingButterfly from '@/components/FlyingButterfly';
+import PatternBackground from '@/components/PatternBackground';
+import MainNavigation from '@/components/MainNavigation';
 
 const Index = () => {
   useEffect(() => {
@@ -12,42 +14,37 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pale-blue via-cloud-white to-pale-blue page-transition">
-      <ButterlyCursor />
+      {/* Фоновые паттерны */}
+      <PatternBackground />
+      
+      {/* Летающие бабочки */}
+      <FlyingButterfly count={5} />
       
       {/* Облака верхний слой */}
-      <div className="absolute top-20 left-1/4 opacity-30 animate-float" style={{ animationDelay: '0s' }}>
-        <div className="cloud-sm"></div>
-      </div>
       <div className="absolute top-40 right-1/4 opacity-20 animate-float" style={{ animationDelay: '1.5s' }}>
         <div className="cloud-sm"></div>
       </div>
       
       {/* Шапка */}
-      <header className="container py-8 relative">
+      <header className="container py-6 relative">
         <div className="flex flex-col md:flex-row justify-between items-center relative z-10">
-          <div className="flex items-center mb-4 md:mb-0">
-            <div className="forget-me-not mr-3">
-              <div className="flower-petal"></div>
-              <div className="flower-petal"></div>
-              <div className="flower-petal"></div>
-              <div className="flower-petal"></div>
-              <div className="flower-petal"></div>
-              <div className="flower-center"></div>
+          <div className="flex items-center mb-6 md:mb-0">
+            {/* Логотип */}
+            <div className="w-16 h-16 mr-4">
+              <img 
+                src="/placeholder.svg" // Замените на реальный путь к логотипу
+                alt="Незабудка логотип" 
+                className="w-full h-full object-contain"
+              />
             </div>
-            <h1 className="text-3xl font-bold text-primary">Незабудка</h1>
+            <div>
+              <h1 className="text-3xl font-bold text-primary">Незабудка</h1>
+              <p className="text-sm text-gray-600">Детский сад</p>
+            </div>
           </div>
           
-          <nav className="flex gap-2 md:gap-4">
-            <Button variant="ghost" size="lg" className="rounded-full hover:bg-primary/10 transition-all duration-300" asChild>
-              <Link to="/">Главная</Link>
-            </Button>
-            <Button variant="ghost" size="lg" className="rounded-full hover:bg-primary/10 transition-all duration-300" asChild>
-              <Link to="/about">О нас</Link>
-            </Button>
-            <Button variant="ghost" size="lg" className="rounded-full hover:bg-primary/10 transition-all duration-300" asChild>
-              <Link to="/contacts">Контакты</Link>
-            </Button>
-          </nav>
+          {/* Новое навигационное меню */}
+          <MainNavigation />
         </div>
       </header>
       
@@ -79,17 +76,6 @@ const Index = () => {
             </div>
             
             <div className="order-1 md:order-2 relative">
-              <div className="absolute -top-16 -right-16 animate-float" style={{ animationDelay: '0.5s' }}>
-                <div className="forget-me-not scale-75 md:scale-100">
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-center"></div>
-                </div>
-              </div>
-              
               <div className="rounded-3xl overflow-hidden shadow-soft relative">
                 <img 
                   src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
@@ -97,17 +83,6 @@ const Index = () => {
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-              </div>
-              
-              <div className="absolute -bottom-12 -left-12 animate-float" style={{ animationDelay: '1s' }}>
-                <div className="forget-me-not scale-75 md:scale-100">
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-center"></div>
-                </div>
               </div>
             </div>
           </div>
@@ -172,13 +147,12 @@ const Index = () => {
           <div className="py-12 border-t border-primary/10">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="flex items-center mb-6 md:mb-0">
-                <div className="forget-me-not scale-75">
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-petal"></div>
-                  <div className="flower-center"></div>
+                <div className="w-12 h-12 mr-3">
+                  <img 
+                    src="/placeholder.svg" // Замените на реальный путь к логотипу
+                    alt="Незабудка логотип" 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-primary">Детский сад «Незабудка»</h2>
@@ -189,10 +163,10 @@ const Index = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-4 text-sm">
                 <Link to="/about" className="text-gray-600 hover:text-primary transition-colors">О нас</Link>
                 <Link to="/contacts" className="text-gray-600 hover:text-primary transition-colors">Контакты</Link>
-                <Link to="/" className="text-gray-600 hover:text-primary transition-colors">Программы</Link>
-                <Link to="/" className="text-gray-600 hover:text-primary transition-colors">Фотогалерея</Link>
-                <Link to="/" className="text-gray-600 hover:text-primary transition-colors">Расписание</Link>
-                <Link to="/" className="text-gray-600 hover:text-primary transition-colors">Отзывы</Link>
+                <Link to="/programs" className="text-gray-600 hover:text-primary transition-colors">Программы</Link>
+                <Link to="/gallery" className="text-gray-600 hover:text-primary transition-colors">Фотогалерея</Link>
+                <Link to="/schedule" className="text-gray-600 hover:text-primary transition-colors">Расписание</Link>
+                <Link to="/reviews" className="text-gray-600 hover:text-primary transition-colors">Отзывы</Link>
               </div>
             </div>
             
@@ -203,9 +177,6 @@ const Index = () => {
         </div>
         
         {/* Облака нижний слой */}
-        <div className="absolute bottom-40 left-10 opacity-30 animate-float" style={{ animationDelay: '0.5s' }}>
-          <div className="cloud-sm"></div>
-        </div>
         <div className="absolute bottom-20 right-10 opacity-40 animate-float" style={{ animationDelay: '2s' }}>
           <div className="cloud-sm"></div>
         </div>
